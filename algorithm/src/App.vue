@@ -19,31 +19,34 @@
  -->
 <script setup lang="ts">
 import {ref} from "vue";
-import {getArray} from "@/util/tools";
+import {getArray, generateUniqueRandomIntegers} from "@/util/tools";
 // 原始数据
 const rawData = ref('')
 // 排序后的数据
 const result = ref('')
 
 /**
- * 冒泡排序。
+ * 冒泡(升序)排序。
  * 冒泡排序是最简单的排序算法之一，其基本思想是将相邻的两个元素进行比较，如果顺序不对就交换它们的位置。该算法的时间复杂度为O(n^2)。
- * 升序 - 里面for 若前者 > 后者，交换；每循环一次，外层for长度减1
+ * 升序 - 里面for 若前者 < 后者，交换；每循环一次，外层for长度减1
  */
 const maopaoClickListener = () => {
     let length: number = 4;
-    let array: number[] = getArray(length);
-    rawData.value = JSON.stringify({...array})
+    let array: number[] = generateUniqueRandomIntegers(length, 100, 1);
+    rawData.value = JSON.stringify([...array])
     for (let i = 0; i < length - 1; i++) {
+        let flag = false;
         for(let j = 0; j < length - 1 - i; j++) {
-            if(array[j] < array[j+1]){
+            if(array[j] > array[j+1]){
                 let temp = array[j];
                 array[j] = array[j+1];
                 array[j+1] = temp;
+                flag = true;
             }
         }
+        if (!flag) break;
     }
-    result.value = JSON.stringify({...array})
+    result.value = JSON.stringify([...array])
 }
 /**
  * 选择排序
@@ -164,10 +167,10 @@ const xianxingClickListener = () => {
           <button @click="xianxingClickListener">线性查找</button>
       </div>
       <div class="footer">
-          <div>
+          <div class="result">
               原始数据：{{rawData}}
           </div>
-          <div>
+          <div class="result">
               排序后：{{result}}
           </div>
       </div>
@@ -200,6 +203,10 @@ const xianxingClickListener = () => {
     }
     .footer {
         margin-top: 20px;
+        .result {
+            font-size: 24px;
+            color: black;
+        }
     }
 }
 </style>
