@@ -142,6 +142,52 @@ const haxiClickListener = () => {
 const xianxingClickListener = () => {
 
 }
+const kexuanlianClickListener = () => {
+    const res = {};
+    console.log('res.data --> ' + res?.data)
+    const res1 = null;
+    console.log('res1.data --> ' + res1?.data)
+}
+/**
+ * 空值合并操作符
+ * 如果左侧的操作数为null或undefined，则返回右侧的操作数，否则返回左侧的操作数。
+ */
+const kzhhbClickListener = () => {
+    const res = {};
+    console.log('res --> ' + (res ?? 0))
+    const res1 = null;
+    console.log('res1 --> ' + (res1 ?? 100))
+    const res2 = null;
+    console.log('res2 --> ' + (200 ?? res2))
+    const res3 = 3;
+    console.log('res3 --> ' + (300 ?? res3))
+}
+/**
+ * 变量提升与函数提升
+ */
+const tishengClickListener = () => {
+    // console.log(x); // ReferenceError
+    // let x = 3;
+
+    baz(); // 类型错误：baz 不是一个函数;Uncaught TypeError: baz is not a function
+    var baz = function () {
+        console.log("bar2");
+    };
+}
+/**
+ * 原型
+ */
+const yuanxingClickListener = () => {
+    const myObject = {};
+    const myPrototype = Object.getPrototypeOf(myObject);
+    console.log('myPrototype --> ' + myPrototype);
+    console.log(myPrototype === Object.prototype);  // 输出: true
+
+    var myFunction = function () {
+        console.log('...')
+    }
+    myFunction();
+}
 </script>
 
 <template>
@@ -173,6 +219,16 @@ const xianxingClickListener = () => {
           <div class="result">
               排序后：{{result}}
           </div>
+      </div>
+      <div class="title">
+          <span>基础内容</span>
+      </div>
+      <div class="content">
+          操作符
+          <button @click="kexuanlianClickListener">可选链  ?.</button>
+          <button @click="kzhhbClickListener">空值合并  ??</button>
+          <button @click="tishengClickListener">变量提升与函数提升</button>
+          <button @click="yuanxingClickListener">原型</button>
       </div>
   </div>
 </template>
