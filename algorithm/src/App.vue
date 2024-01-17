@@ -36,11 +36,11 @@ const maopaoClickListener = () => {
     rawData.value = JSON.stringify([...array])
     for (let i = 0; i < length - 1; i++) {
         let flag = false;
-        for(let j = 0; j < length - 1 - i; j++) {
-            if(array[j] > array[j+1]){
+        for (let j = 0; j < length - 1 - i; j++) {
+            if (array[j] > array[j + 1]) {
                 let temp = array[j];
-                array[j] = array[j+1];
-                array[j+1] = temp;
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
                 flag = true;
             }
         }
@@ -58,7 +58,7 @@ const xuanzeClickListener = () => {
     rawData.value = JSON.stringify({...array})
     for (let i = 0; i < length; i++) {
         let minIndex = i
-        for (let j = i + 1; j < length; j++){
+        for (let j = i + 1; j < length; j++) {
             if (array[i] > array[j]) {
                 minIndex = j
             }
@@ -79,9 +79,9 @@ const charuClickListener = () => {
     rawData.value = JSON.stringify({...array})
     for (let i = 1; i < length; i++) {
         let itemI = array[i]
-        for (let j = i - 1; j >= 0; j--){
+        for (let j = i - 1; j >= 0; j--) {
             let itemJ = array[j]
-            if(itemI < itemJ) {
+            if (itemI < itemJ) {
                 array[j] = itemI
                 array[i] = itemJ
             }
@@ -191,46 +191,49 @@ const yuanxingClickListener = () => {
 </script>
 
 <template>
-  <div class="main">
-      <div class="title">
-          <span>算法示例</span>
-      </div>
-      <div class="content">
-          排序算法：
-          <button @click="maopaoClickListener">冒泡排序</button>
-          <button @click="xuanzeClickListener">选择排序</button>
-          <button @click="charuClickListener">插入排序</button>
-          <button @click="xierClickListener">希尔排序</button>
-          <button @click="guibingClickListener">归并排序</button>
-          <button @click="kuaisuClickListener">快速排序</button>
-          <button @click="duiClickListener">堆排序</button>
-      </div>
-      <div class="content">
-          查找算法：
-          <button @click="shunxuClickListener">顺序查找</button>
-          <button @click="erfenClickListener">二分查找</button>
-          <button @click="haxiClickListener">哈希查找</button>
-          <button @click="xianxingClickListener">线性查找</button>
-      </div>
-      <div class="footer">
-          <div class="result">
-              原始数据：{{rawData}}
-          </div>
-          <div class="result">
-              排序后：{{result}}
-          </div>
-      </div>
-      <div class="title">
-          <span>基础内容</span>
-      </div>
-      <div class="content">
-          操作符
-          <button @click="kexuanlianClickListener">可选链  ?.</button>
-          <button @click="kzhhbClickListener">空值合并  ??</button>
-          <button @click="tishengClickListener">变量提升与函数提升</button>
-          <button @click="yuanxingClickListener">原型</button>
-      </div>
-  </div>
+    <div class="main">
+        <div class="title">
+            <span>算法示例</span>
+        </div>
+        <div class="content">
+            排序算法：
+            <button @click="maopaoClickListener">冒泡排序</button>
+            <button @click="xuanzeClickListener">选择排序</button>
+            <button @click="charuClickListener">插入排序</button>
+            <button @click="xierClickListener">希尔排序</button>
+            <button @click="guibingClickListener">归并排序</button>
+            <button @click="kuaisuClickListener">快速排序</button>
+            <button @click="duiClickListener">堆排序</button>
+        </div>
+        <div class="content">
+            查找算法：
+            <button @click="shunxuClickListener">顺序查找</button>
+            <button @click="erfenClickListener">二分查找</button>
+            <button @click="haxiClickListener">哈希查找</button>
+            <button @click="xianxingClickListener">线性查找</button>
+        </div>
+        <div class="footer">
+            <div class="result">
+                原始数据：{{ rawData }}
+            </div>
+            <div class="result">
+                排序后：{{ result }}
+            </div>
+        </div>
+        <div class="title">
+            <span>基础内容</span>
+        </div>
+        <div class="content">
+            操作符
+            <button @click="kexuanlianClickListener">可选链 ?.</button>
+            <button @click="kzhhbClickListener">空值合并 ??</button>
+            <button @click="tishengClickListener">变量提升与函数提升</button>
+            <button @click="yuanxingClickListener">原型</button>
+        </div>
+        <div class="title">
+            <hhb-button :disabled="false">自定义组件库</hhb-button>
+        </div>
+    </div>
 </template>
 
 <style scoped>
@@ -241,24 +244,29 @@ const yuanxingClickListener = () => {
     height: 100vh;
     margin-left: 10vw;
     margin-right: 10vw;
+
     .title {
         width: 100%;
         height: auto;
         display: flex;
         justify-content: center;
         margin-top: 20px;
+
         > span {
             font-size: 30px;
             font-weight: bold;
         }
     }
+
     .content {
         > button {
             margin-left: 10px;
         }
     }
+
     .footer {
         margin-top: 20px;
+
         .result {
             font-size: 24px;
             color: black;
